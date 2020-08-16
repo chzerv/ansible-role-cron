@@ -1,0 +1,138 @@
+---
+- name: Ensure required fields are set.
+  assert:
+    that:
+      - item.name is defined
+      - item.job is defined
+      - item.name | length > 0
+      - item.job | length > 0
+    quiet: true
+  with_items: "{{ cron_jobs }}"
+  when: cron_jobs is defined
+
+- name: Ensure that minute doesn't co-exist with special_time.
+  assert:
+    that:
+      - item.minute is not defined
+    quiet: true
+    fail_msg: "'special_time' has to be the only time field"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.special_time is defined
+
+- name: Ensure that hour doesn't co-exist with special_time.
+  assert:
+    that:
+      - item.hour is not defined
+    quiet: true
+    fail_msg: "'special_time' has to be the only time field"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.special_time is defined
+
+- name: Ensure that day doesn't co-exist with special_time.
+  assert:
+    that:
+      - item.day is not defined
+    quiet: true
+    fail_msg: "'special_time' has to be the only time field"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.special_time is defined
+
+- name: Ensure that month doesn't co-exist with special_time.
+  assert:
+    that:
+      - item.month is not defined
+    quiet: true
+    fail_msg: "'special_time' has to be the only time field"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.special_time is defined
+
+- name: Ensure that weekday doesn't co-exist with special_time.
+  assert:
+    that:
+      - item.weekday is not defined
+    quiet: true
+    fail_msg: "'special_time' has to be the only time field"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.special_time is defined
+
+- name: Ensure that the minutes field is set correctly (if it is set).
+  assert:
+    that:
+      - item.minute | int >= 0
+      - item.minute | int <= 59
+    quiet: true
+    fail_msg: "'minutes' must be between 0-59"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.minute is defined
+
+- name: Ensure that the hour field is set correctly (if it is set).
+  assert:
+    that:
+      - item.hour | int >= 0
+      - item.hour | int <= 23
+    quiet: true
+    fail_msg: "'hour' must be between 0-23"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.hour is defined
+
+- name: Ensure that the day field is set correctly (if it is set).
+  assert:
+    that:
+      - item.day | int >= 1
+      - item.day | int <= 31
+    fail_msg: "'day' must be between 1-31"
+    quiet: true
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.day is defined
+
+- name: Ensure that the month field is set correctly (if it is set).
+  assert:
+    that:
+      - item.month | int >= 1
+      - item.month | int <= 12
+    fail_msg: "'month' must be between 1-12"
+    quiet: true
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.month is defined
+
+- name: Ensure that the weekday field is set correctly (if it is set).
+  assert:
+    that:
+      - item.weekday | int >= 0
+      - item.weekday | int <= 6
+    quiet: true
+    fail_msg: "'weekday' must be between 0-6"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.weekday is defined
+
+- name: Ensure that the state field is set correctly (if it is set).
+  assert:
+    that:
+      - item.state == "present"
+      - item.state == "absent"
+    quiet: true
+    fail_msg: "'state' must be either 'present' or 'absent'"
+  with_items: "{{ cron_jobs }}"
+  when:
+    - cron_jobs is defined
+    - item.state is defined
