@@ -1,5 +1,9 @@
 # Ansible Role: Cron
 
+![Ansible Molecule](https://github.com/chzerv/ansible-role-cron/workflows/Ansible%20Molecule/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ansible Role](https://img.shields.io/ansible/role/50230?color=dodgerblue)](https://galaxy.ansible.com/chzerv/cron)
+
 This role installs [cron](https://wiki.archlinux.org/index.php/Cron) and schedules jobs on a Linux system.
 
 ## Requirements
