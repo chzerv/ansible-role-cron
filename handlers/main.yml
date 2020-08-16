@@ -1,2 +1,5 @@
 ---
-# handlers file for cron
+- name: restart cron
+  service:
+    name: "{{ cron_service }}"
+    state: restarted
