@@ -1,2 +1,14 @@
 ---
-# defaults file for cron
+cron_backup_original_crontab: true
+
+cron_jobs: []
+# cron_jobs:
+#   - name: foo
+#     minute: "0"
+#     hour: "0"
+#     day: "*"
+#     month: "4"
+#     weekday: "*"
+#     job: "foo.sh"
+#     state: present
+#     user: "{{ ansible_user }}"
