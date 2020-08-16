@@ -35,11 +35,11 @@ cron_jobs: []
 > A list of options in order to schedule the specified job. These options are:
 >
 > - `name`: The name of the job. (**required**)
-> - `minute`: (**optional**)
-> - `hour`: (**optional**)
-> - `day`: (**optional**)
-> - `month`: (**optional**)
-> - `weekday`: (**optional**)
+> - `minute`: Minute when the job will be run. Possible values are between 0-59. (**optional**)
+> - `hour`: Hour of the day when the job will be run. Possible values are between 0-23. (**optional**)
+> - `day`: Day of the month the job will be run. Possible values are between 1-31. (**optional**)
+> - `month`: Month the job will be run. Possible values are between 1-12. (**optional**)
+> - `weekday`: Day of the week the job will be run. Possible values are between 0-6. (**optional**)
 > - `special_time`: Can be used instead of hour, minute etc.
 >   Possible values are: `annually`, `daily`, `hourly`, `monthly`, `reboot`, `weekly`, `yearly`. (**optional**)
 > - `job`: The script/command etc to execute. (**required**)
