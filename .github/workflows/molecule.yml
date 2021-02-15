@@ -51,7 +51,7 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          pip install docker yamllint ansible-lint molecule molecule-docker
+          pip install docker yamllint ansible ansible-lint molecule molecule-docker
 
       - name: Run molecule test
         run: molecule test
