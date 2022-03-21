@@ -1,23 +1,23 @@
 ---
 - name: Set distribution family specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Ensure variables are set correctly.
   include_tasks: variable-check.yml
 
 - name: Install cron.
-  package:
+  ansible.builtin.package:
     name: "{{ cron_package }}"
     state: present
 
 - name: Ensure cron service is started and enabled at boot.
-  service:
+  ansible.builtin.service:
     name: "{{ cron_service }}"
     state: started
     enabled: true
 
 - name: Schedule cron jobs.
-  cron:
+  ansible.builtin.cron:
     name: "{{ item.name | default(omit) }}"
     minute: "{{ item.minute | default(omit) }}"
     hour: "{{ item.hour | default(omit) }}"

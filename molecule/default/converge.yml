@@ -14,5 +14,5 @@
 
   tasks:
     - name: "Include cron"
-      include_role:
+      ansible.builtin.include_role:
         name: "ansible-role-cron"

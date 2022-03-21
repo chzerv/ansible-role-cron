@@ -1,6 +1,6 @@
 ---
 - name: Ensure required fields are set.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.name is defined
       - item.job is defined
@@ -11,7 +11,7 @@
   when: cron_jobs is defined
 
 - name: Ensure that minute doesn't co-exist with special_time.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.minute is not defined
     quiet: true
@@ -22,7 +22,7 @@
     - item.special_time is defined
 
 - name: Ensure that hour doesn't co-exist with special_time.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.hour is not defined
     quiet: true
@@ -33,7 +33,7 @@
     - item.special_time is defined
 
 - name: Ensure that day doesn't co-exist with special_time.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.day is not defined
     quiet: true
@@ -44,7 +44,7 @@
     - item.special_time is defined
 
 - name: Ensure that month doesn't co-exist with special_time.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.month is not defined
     quiet: true
@@ -55,7 +55,7 @@
     - item.special_time is defined
 
 - name: Ensure that weekday doesn't co-exist with special_time.
-  assert:
+  ansible.builtin.assert:
     that:
       - item.weekday is not defined
     quiet: true
@@ -66,7 +66,7 @@
     - item.special_time is defined
 
 - name: Ensure that the minutes field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.minute | int >= 0
       - item.minute | int <= 59
@@ -78,7 +78,7 @@
     - item.minute is defined
 
 - name: Ensure that the hour field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.hour | int >= 0
       - item.hour | int <= 23
@@ -90,7 +90,7 @@
     - item.hour is defined
 
 - name: Ensure that the day field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.day | int >= 1
       - item.day | int <= 31
@@ -102,7 +102,7 @@
     - item.day is defined
 
 - name: Ensure that the month field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.month | int >= 1
       - item.month | int <= 12
@@ -114,7 +114,7 @@
     - item.month is defined
 
 - name: Ensure that the weekday field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.weekday | int >= 0
       - item.weekday | int <= 6
@@ -126,7 +126,7 @@
     - item.weekday is defined
 
 - name: Ensure that the state field is set correctly (if it is set).
-  assert:
+  ansible.builtin.assert:
     that:
       - item.state == "present"
       - item.state == "absent"
